@@ -13,9 +13,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+    
+    //not using storyboard
+    window = UIWindow(frame: UIScreen.main.bounds)
+    window?.makeKeyAndVisible()
+    
+    let layout = UICollectionViewFlowLayout()
+    let vc = MovieListViewController(collectionViewLayout: layout)
+    window?.rootViewController = UINavigationController(rootViewController: vc)
+    application.statusBarStyle = .lightContent
+    
+    setAppearance(forApplication: application)
     return true
   }
 
@@ -40,7 +49,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func applicationWillTerminate(_ application: UIApplication) {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
+}
 
-
+extension AppDelegate {
+  fileprivate func setAppearance(forApplication application: UIApplication) {
+    UINavigationBar.appearance().barTintColor = UIColor(red: 230/255, green: 32/255, blue: 31/255, alpha: 1.0)
+    UINavigationBar.appearance().tintColor = .white
+    UINavigationBar.appearance().isTranslucent = false
+    
+    //removes line for adjoining menubar
+    UINavigationBar.appearance().shadowImage = UIImage()
+    UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+    
+    let attrs = [
+      NSAttributedString.Key.foregroundColor: UIColor.white
+    ]
+    
+    UINavigationBar.appearance().titleTextAttributes = attrs
+    let statusBar = UIView()
+    statusBar.backgroundColor = UIColor(red: 194/255, green: 31/255, blue: 31/255, alpha: 1)
+    
+    window?.addSubview(statusBar)
+    window?.addConstraints(withFormat: "H:|[v0]|", forViews: statusBar)
+    
+    let height = application.statusBarFrame.height
+    window?.addConstraints(withFormat: "V:[v0(\(height))]", forViews: statusBar)
+  }
 }
 

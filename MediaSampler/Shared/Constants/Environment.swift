@@ -57,7 +57,7 @@ enum Environment: String {
     switch self {
     case .production:
       var urlComponents = URLComponents()
-      urlComponents.scheme = EnvironmentConstants.productionUnsecureScheme
+      urlComponents.scheme = EnvironmentConstants.productionSecureScheme
       urlComponents.host = EnvironmentConstants.productionCloudHost
       return urlComponents
     default: return nil

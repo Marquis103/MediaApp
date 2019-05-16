@@ -9,11 +9,11 @@
 import Foundation
 
 class Movie: Codable {
-  var id: Int64
-  var title: String
+  var id: Int64?
+  var title: String?
   var genre: String?
   var synopsis: String?
-  var artistNames: [String]?
+  var artistNames: String?
   var language: String?
   var year: Int?
   var artKey: String?
@@ -22,7 +22,7 @@ class Movie: Codable {
     guard let key = artKey else { return nil }
     
     var components = Environment(platform: "production").cloudFrontComponents
-    components?.path = "\(key)_270.jpeg"
+    components?.path = "/\(key)_270.jpeg"
     
     if let url = components?.url {
       return url
@@ -38,14 +38,22 @@ class Movie: Codable {
   ///
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: MovieKeys.self)
-    id = try values.decode(Int64.self, forKey: .id)
+    if let identifer = try values.decodeIfPresent(Int64.self, forKey: .id) {
+      id = identifer
+    } else if let identifier = try values.decodeIfPresent(Int64.self, forKey: .titleId) {
+      id = identifier
+    } else {
+      let context = DecodingError.Context.init(codingPath: [MovieKeys.id, .titleId], debugDescription: "Keys not found!")
+      throw DecodingError.keyNotFound(MovieKeys.id, context)
+    }
+    
     title = try values.decode(String.self, forKey: .title)
     artKey = try values.decode(String.self, forKey: .artKey)
-    genre = try values.decode(String.self, forKey: .genre)
-    synopsis = try values.decode(String.self, forKey: .synopsis)
-    artistNames = try values.decode([String].self, forKey: .artistNames)
-    language = try values.decode(String.self, forKey: .language)
-    year = try values.decode(Int.self, forKey: .year)
+    genre = try values.decodeIfPresent(String.self, forKey: .genre)
+    synopsis = try values.decodeIfPresent(String.self, forKey: .synopsis)
+    artistNames = try values.decodeIfPresent(String.self, forKey: .artistNames)
+    language = try values.decodeIfPresent(String.self, forKey: .language)
+    year = try values.decodeIfPresent(Int.self, forKey: .year)
     
   }
 }
@@ -54,11 +62,12 @@ extension Movie {
   // Conform to Codable protocol for serialization and deserialization of JSON objects.
   enum MovieKeys: String, CodingKey {
     case id = "id"
+    case titleId = "titleId"
     case title = "title"
     case artKey = "artKey"
     case genre = "genre"
     case synopsis = "synopsis"
-    case artistNames = "artistNames"
+    case artistNames = "artistName"
     case language = "language"
     case year = "year"
   }
