@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
   fileprivate func setAppearance(forApplication application: UIApplication) {
-    UINavigationBar.appearance().barTintColor = UIColor(red: 230/255, green: 32/255, blue: 31/255, alpha: 1.0)
+    UINavigationBar.appearance().barTintColor = .navBarBlue
     UINavigationBar.appearance().tintColor = .white
     UINavigationBar.appearance().isTranslucent = false
     
@@ -67,7 +67,7 @@ extension AppDelegate {
     
     UINavigationBar.appearance().titleTextAttributes = attrs
     let statusBar = UIView()
-    statusBar.backgroundColor = UIColor(red: 194/255, green: 31/255, blue: 31/255, alpha: 1)
+    statusBar.backgroundColor = .statusBarBlue
     
     window?.addSubview(statusBar)
     window?.addConstraints(withFormat: "H:|[v0]|", forViews: statusBar)

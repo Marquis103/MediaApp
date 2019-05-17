@@ -9,12 +9,14 @@
 import UIKit
 
 class UIUtils {
+  private init() { }
+  
   ///
   /// Displays a basic UIAlertController with "`OK`" action.
   ///
   /// Parameters:
-  ///   - title: Title of alert
-  ///   - message: Message of alert body
+  ///   - `title`: Title of alert
+  ///   - `message`: Message of alert body
   ///
   static func displayBasicAlertAction(onViewController vc: UIViewController, withTitle title: String, message: String) {
     DispatchQueue.main.async {
@@ -22,6 +24,22 @@ class UIUtils {
       let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
       alert.addAction(okAction)
       vc.present(alert, animated: true, completion: nil)
+    }
+  }
+}
+
+extension UIViewController {
+  ///
+  /// Ends the refreshing on the control, on main thread, it its currently refreshing
+  ///
+  /// Parameters:
+  ///   - `refreshControl`: Control that needs to end refreshing
+  ///
+  func endRefresh(onControl refreshControl: UIRefreshControl?) {
+    DispatchQueue.main.async {
+      if refreshControl?.isRefreshing ?? false {
+        refreshControl?.endRefreshing()
+      }
     }
   }
 }
