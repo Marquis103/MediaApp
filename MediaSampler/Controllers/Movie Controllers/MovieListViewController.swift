@@ -57,6 +57,18 @@ class MovieListViewController: UICollectionViewController, UICollectionViewDeleg
     self.onRefresh(nil)
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let movie = sender as? Movie, let id = movie.id else {
+      UIUtils.displayBasicAlertAction(onViewController: self, withTitle: "Movie Error", message: "Unable to show movie details. Pleae try again.")
+      return
+    }
+    
+    if segue.identifier == Segue.movieDetailViewSegue {
+      let detailVC = segue.destination as? MovieDetailViewController
+      detailVC?.movieId = id
+    }
+  }
+  
   // MARK: - Helpers
   
   @objc func onRefresh(_ sender: UIRefreshControl?) {
@@ -93,6 +105,11 @@ class MovieListViewController: UICollectionViewController, UICollectionViewDeleg
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reuseIdentifier, for: indexPath) as? MovieCell
     cell?.movie = movies[indexPath.item]
     return cell ?? UICollectionViewCell()
+  }
+  
+  override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let movie = movies[indexPath.item]
+    performSegue(withIdentifier: Segue.movieDetailViewSegue, sender: movie)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -17,6 +17,11 @@ class Movie: Codable {
   var language: String?
   var year: Int?
   var artKey: String?
+  var mediaKey: String?
+  var duration: Int?
+  var rating: String?
+  var lendingMessage: String?
+  var cast: [String]?
   
   var image: URL? {
     guard let key = artKey else { return nil }
@@ -54,6 +59,11 @@ class Movie: Codable {
     artistNames = try values.decodeIfPresent(String.self, forKey: .artistNames)
     language = try values.decodeIfPresent(String.self, forKey: .language)
     year = try values.decodeIfPresent(Int.self, forKey: .year)
+    rating = try values.decodeIfPresent(String.self, forKey: .rating)
+    lendingMessage = try values.decodeIfPresent(String.self, forKey: .lendingMessage)
+    
+    let contents = try values.nestedContainer(keyedBy: MovieKeys.self, forKey: .contents)
+    
     
   }
 }
@@ -70,6 +80,11 @@ extension Movie {
     case artistNames = "artistName"
     case language = "language"
     case year = "year"
+    case contents = "contents"
+    case mediaKey = "mediaKey"
+    case rating = "rating"
+    case lendingMessage = "lendingMessage"
+    //case cast = "
   }
   
   /// Serializes a movie objects from data

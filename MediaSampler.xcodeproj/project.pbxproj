@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F8C9BD9E228E333F004EB786 /* UIColor+Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C9BD9D228E333F004EB786 /* UIColor+Exts.swift */; };
 		F8C9BDA0228E3E6A004EB786 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C9BD9F228E3E6A004EB786 /* MovieDetailViewController.swift */; };
+		F8D68870228E6D4500692216 /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D6886F228E6D4500692216 /* Segue.swift */; };
 		F8EA7BD7228CCB320008C0C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EA7BD6228CCB320008C0C7 /* AppDelegate.swift */; };
 		F8EA7BD9228CCB320008C0C7 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EA7BD8228CCB320008C0C7 /* MovieListViewController.swift */; };
 		F8EA7BDC228CCB320008C0C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8EA7BDA228CCB320008C0C7 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		F8C9BD9D228E333F004EB786 /* UIColor+Exts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Exts.swift"; sourceTree = "<group>"; };
 		F8C9BD9F228E3E6A004EB786 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		F8D6886F228E6D4500692216 /* Segue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
 		F8EA7BD3228CCB320008C0C7 /* MediaSampler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaSampler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8EA7BD6228CCB320008C0C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8EA7BD8228CCB320008C0C7 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				F8EA7C04228CEC700008C0C7 /* Environment.swift */,
+				F8D6886F228E6D4500692216 /* Segue.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				F8EA7C08228CEFF50008C0C7 /* Utilities.swift in Sources */,
 				F8EA7C0D228D14480008C0C7 /* UI-Utilities.swift in Sources */,
 				F8EA7C15228D23390008C0C7 /* UIView+Exts.swift in Sources */,
+				F8D68870228E6D4500692216 /* Segue.swift in Sources */,
 				F8C9BDA0228E3E6A004EB786 /* MovieDetailViewController.swift in Sources */,
 				F8EA7C13228D1CA10008C0C7 /* UIImageView+Exts.swift in Sources */,
 				F8EA7C0F228D17DF0008C0C7 /* MovieCell.swift in Sources */,

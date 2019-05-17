@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let layout = UICollectionViewFlowLayout()
     let vc = MovieListViewController(collectionViewLayout: layout)
     window?.rootViewController = UINavigationController(rootViewController: vc)
-    application.statusBarStyle = .lightContent
+//    application.statusBarStyle = .lightContent
     
     setAppearance(forApplication: application)
     return true

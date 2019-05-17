@@ -18,10 +18,10 @@ class UIUtils {
   ///   - `title`: Title of alert
   ///   - `message`: Message of alert body
   ///
-  static func displayBasicAlertAction(onViewController vc: UIViewController, withTitle title: String, message: String) {
+  static func displayBasicAlertAction(onViewController vc: UIViewController, withTitle title: String, message: String, completionHandler: ((UIAlertAction) -> Void)? = nil) {
     DispatchQueue.main.async {
       let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-      let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+      let okAction = UIAlertAction(title: "OK", style: .default, handler: completionHandler)
       alert.addAction(okAction)
       vc.present(alert, animated: true, completion: nil)
     }

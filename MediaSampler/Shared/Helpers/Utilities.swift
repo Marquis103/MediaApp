@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias MovieDuration = (hours: Int, minutes: Int)
+
 class Utils {
   ///
   /// Creates an URLRequset object for a given url, using a specfied http method,
@@ -32,5 +34,16 @@ class Utils {
     }
     
     return request
+  }
+}
+
+extension Int {
+  ///
+  /// Converts seconds to hours and minutes
+  ///
+  func movieDuration(fromSeconds seconds: Int) -> MovieDuration {
+    let hours = seconds / 3600
+    let minutes = (seconds % 3600) / 60
+    return MovieDuration(hours, minutes)
   }
 }
