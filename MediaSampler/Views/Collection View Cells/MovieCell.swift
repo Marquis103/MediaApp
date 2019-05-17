@@ -70,22 +70,20 @@ class MovieCell: UICollectionViewCell {
   fileprivate let title: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.lineBreakMode = .byWordWrapping
-    label.numberOfLines = 0
-    label.font = UIFont.systemFont(ofSize: 14.0, weight: .medium)
+    label.lineBreakMode = .byTruncatingTail
+    label.numberOfLines = 2
+    label.font = UIFont.systemFont(ofSize: 15.0, weight: .medium)
     label.textAlignment = .center
-    label.adjustsFontSizeToFitWidth = true
-    label.minimumScaleFactor = 0.2
     return label
   }()
   
   fileprivate let artistNames: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.lineBreakMode = .byWordWrapping
+    label.lineBreakMode = .byTruncatingTail
     label.font = UIFont.systemFont(ofSize: 12.0, weight: .light)
     label.textAlignment = .center
-    label.numberOfLines = 0
+    label.numberOfLines = 2
     return label
   }()
 }

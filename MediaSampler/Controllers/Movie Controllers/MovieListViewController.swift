@@ -97,7 +97,7 @@ class MovieListViewController: UICollectionViewController, UICollectionViewDeleg
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let width: CGFloat = (view.frame.width - 32.0) / 3.2
-    return CGSize(width: width, height: view.frame.height * 0.45)
+    return CGSize(width: width, height: view.frame.height * 0.40)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
