@@ -25,8 +25,9 @@ class MovieListViewController: UICollectionViewController, UICollectionViewDeleg
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    collectionView.backgroundColor = .white
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     
+    collectionView.backgroundColor = .white
     collectionView.alwaysBounceVertical = true
     collectionView.register(MovieCell.self, forCellWithReuseIdentifier: MovieCell.reuseIdentifier)
     collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]

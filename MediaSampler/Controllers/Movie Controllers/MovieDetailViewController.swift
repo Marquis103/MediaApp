@@ -112,7 +112,7 @@ class MovieDetailViewController: UITableViewController {
     }
     
     if let directors = artistListGenerator(artistType: .director), !directors.isEmpty {
-      self.lblDirector.text = "Directors: \(directors)"
+      self.lblDirector.text = "Director: \(directors)"
       rows.append(.directors)
     }
     
