@@ -11,10 +11,9 @@ import Foundation
 class Movie: Codable {
   var id: Int64?
   var title: String?
-  var genre: String?
+  var genre: [Genre]?
   var synopsis: String?
   var artistName: String?
-  var language: String?
   var year: Int?
   var artKey: String?
   var mediaKey: String?
@@ -54,10 +53,9 @@ class Movie: Codable {
     
     title = try values.decode(String.self, forKey: .title)
     artKey = try values.decode(String.self, forKey: .artKey)
-    genre = try values.decodeIfPresent(String.self, forKey: .genre)
+    genre = try values.decodeIfPresent([Genre].self, forKey: .genre)
     synopsis = try values.decodeIfPresent(String.self, forKey: .synopsis)
     artistName = try values.decodeIfPresent(String.self, forKey: .artistNames)
-    //language = try values.decodeIfPresent(String.self, forKey: .language)
     year = try values.decodeIfPresent(Int.self, forKey: .year)
     rating = try values.decodeIfPresent(String.self, forKey: .rating)
     lendingMessage = try values.decodeIfPresent(String.self, forKey: .lendingMessage)
@@ -73,10 +71,9 @@ extension Movie {
     case titleId = "titleId"
     case title = "title"
     case artKey = "artKey"
-    case genre = "genre"
+    case genre = "genres"
     case synopsis = "synopsis"
     case artistNames = "artistName"
-    case language = "language"
     case year = "year"
     case contents = "contents"
     case mediaKey = "mediaKey"

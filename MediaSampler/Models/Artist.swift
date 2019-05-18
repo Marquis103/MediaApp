@@ -10,6 +10,7 @@ import Foundation
 
 ///
 /// Artist data structure returned as a part of Movie Detail
+///
 class Artist: Codable {
   var id: Int64?
   var name: String?

@@ -14,6 +14,7 @@ class MovieDetailViewController: UITableViewController {
   enum MovieDetailTableViewRows: Int, CaseIterable {
     case image = 0
     case metadata
+    case genres
     case play
     case synopsis
     case cast
@@ -32,6 +33,7 @@ class MovieDetailViewController: UITableViewController {
   @IBOutlet weak var lblDirector: UILabel!
   @IBOutlet weak var lblProducers: UILabel!
   @IBOutlet weak var lblWriters: UILabel!
+  @IBOutlet weak var lblGenres: UILabel!
   
   // MARK: - Properties
   fileprivate var movie: Movie? {
@@ -89,6 +91,12 @@ class MovieDetailViewController: UITableViewController {
     }
     
     rows.append(.metadata)
+    
+    //genres
+    if let genres = movie?.genre?.compactMap ({ $0.name }).joined(separator: " | "), !genres.isEmpty {
+      lblGenres.text = genres
+      rows.append(.genres)
+    }
     
     //play button
     rows.append(.play)
@@ -178,6 +186,10 @@ class MovieDetailViewController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return MovieDetailTableViewRows.allCases.count
+  }
+  
+  override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 80.0
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
