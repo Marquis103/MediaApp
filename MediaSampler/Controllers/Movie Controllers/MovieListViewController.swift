@@ -49,26 +49,11 @@ class MovieListViewController: UICollectionViewController, UICollectionViewDeleg
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
-    //TODO: Load data from core data, realm or local db cache
-  }
-  
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
+    // Hypothetically would update data from API service in `viewDidAppear`
+    // while using `viewWillAppear` to update state from realm, coreData or local db cache
     self.onRefresh(nil)
   }
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    guard let movie = sender as? Movie, let id = movie.id else {
-      UIUtils.displayBasicAlertAction(onViewController: self, withTitle: "Movie Error", message: "Unable to show movie details. Pleae try again.")
-      return
-    }
-    
-    if segue.identifier == Segue.movieDetailViewSegue {
-      let detailVC = segue.destination as? MovieDetailViewController
-      detailVC?.movieId = id
-    }
-  }
-  
+
   // MARK: - Helpers
   
   @objc func onRefresh(_ sender: UIRefreshControl?) {
@@ -109,7 +94,17 @@ class MovieListViewController: UICollectionViewController, UICollectionViewDeleg
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let movie = movies[indexPath.item]
-    performSegue(withIdentifier: Segue.movieDetailViewSegue, sender: movie)
+    
+    guard let id = movie.id else {
+      UIUtils.displayBasicAlertAction(onViewController: self, withTitle: "Movie Error", message: "Unable to show movie details. Pleae try again.")
+      return
+    }
+    
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    if let detailVC = storyboard.instantiateViewController(withIdentifier: "movieDetailViewController") as? MovieDetailViewController {
+      detailVC.movieId = id
+      self.navigationController?.pushViewController(detailVC, animated: true)
+    }
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

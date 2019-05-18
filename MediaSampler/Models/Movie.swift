@@ -13,15 +13,15 @@ class Movie: Codable {
   var title: String?
   var genre: String?
   var synopsis: String?
-  var artistNames: String?
+  var artistName: String?
   var language: String?
   var year: Int?
   var artKey: String?
   var mediaKey: String?
-  var duration: Int?
   var rating: String?
   var lendingMessage: String?
-  var cast: [String]?
+  var artists: [Artist]?
+  var content: [MovieContent]?
   
   var image: URL? {
     guard let key = artKey else { return nil }
@@ -56,15 +56,13 @@ class Movie: Codable {
     artKey = try values.decode(String.self, forKey: .artKey)
     genre = try values.decodeIfPresent(String.self, forKey: .genre)
     synopsis = try values.decodeIfPresent(String.self, forKey: .synopsis)
-    artistNames = try values.decodeIfPresent(String.self, forKey: .artistNames)
-    language = try values.decodeIfPresent(String.self, forKey: .language)
+    artistName = try values.decodeIfPresent(String.self, forKey: .artistNames)
+    //language = try values.decodeIfPresent(String.self, forKey: .language)
     year = try values.decodeIfPresent(Int.self, forKey: .year)
     rating = try values.decodeIfPresent(String.self, forKey: .rating)
     lendingMessage = try values.decodeIfPresent(String.self, forKey: .lendingMessage)
-    
-    let contents = try values.nestedContainer(keyedBy: MovieKeys.self, forKey: .contents)
-    
-    
+    artists = try values.decodeIfPresent([Artist].self, forKey: .artists)
+    content = try values.decodeIfPresent([MovieContent].self, forKey: .contents)
   }
 }
 
@@ -84,7 +82,7 @@ extension Movie {
     case mediaKey = "mediaKey"
     case rating = "rating"
     case lendingMessage = "lendingMessage"
-    //case cast = "
+    case artists = "artists"
   }
   
   /// Serializes a movie objects from data
@@ -98,4 +96,32 @@ extension Movie {
       return nil
     }
   }
+  
+  /// Serializes a movie objects from data
+  static func getMovie(from data: Data) -> Movie? {
+    let jsonDecoder = JSONDecoder()
+    do {
+      let movie = try jsonDecoder.decode(Movie.self, from: data)
+      return movie
+    } catch let exception {
+      print("Oh no! Unable to deserialize movie object: \(exception as Any)")
+      return nil
+    }
+  }
 }
+
+extension Movie {
+  struct MovieContent: Codable {
+    var duration: Int?
+    
+    enum MovieContentKeys: String, CodingKey {
+      case duration = "seconds"
+    }
+    
+    init(from decoder: Decoder) throws {
+      let values = try decoder.container(keyedBy: MovieContentKeys.self)
+      duration = try values.decodeIfPresent(Int.self, forKey: .duration)
+    }
+  }
+}
+

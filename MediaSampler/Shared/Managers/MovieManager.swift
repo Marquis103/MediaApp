@@ -56,7 +56,7 @@ class MovieManager {
           return
       }
       
-      let movie = Movie.getMovies(from: data)?.first
+      let movie = Movie.getMovie(from: data)
       completion(.success(movie))
       return
     }

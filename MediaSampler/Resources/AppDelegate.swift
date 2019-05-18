@@ -18,11 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //not using storyboard
     window = UIWindow(frame: UIScreen.main.bounds)
     window?.makeKeyAndVisible()
-    
-    let layout = UICollectionViewFlowLayout()
-    let vc = MovieListViewController(collectionViewLayout: layout)
-    window?.rootViewController = UINavigationController(rootViewController: vc)
-//    application.statusBarStyle = .lightContent
+    window?.rootViewController = UINavigationController(rootViewController: rootController)
     
     setAppearance(forApplication: application)
     return true
@@ -77,3 +73,9 @@ extension AppDelegate {
   }
 }
 
+extension AppDelegate {
+  fileprivate var rootController: UIViewController {
+    let layout = UICollectionViewFlowLayout()
+    return MovieListViewController(collectionViewLayout: layout)
+  }
+}

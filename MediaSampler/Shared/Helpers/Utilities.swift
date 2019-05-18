@@ -27,7 +27,6 @@ class Utils {
     
     //set required headers
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.setValue("X7aXP4f6Bq4Z165OGnUV37qha9y3OuxC2RQlT7SV", forHTTPHeaderField: "x-api-key")
     
     headers?.forEach { key, val in
       request.setValue(val, forHTTPHeaderField: key)
@@ -41,9 +40,9 @@ extension Int {
   ///
   /// Converts seconds to hours and minutes
   ///
-  func movieDuration(fromSeconds seconds: Int) -> MovieDuration {
-    let hours = seconds / 3600
-    let minutes = (seconds % 3600) / 60
+  var movieDuration: MovieDuration {
+    let hours = self / 3600
+    let minutes = (self % 3600) / 60
     return MovieDuration(hours, minutes)
   }
 }

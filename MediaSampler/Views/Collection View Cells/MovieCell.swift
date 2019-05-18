@@ -50,7 +50,7 @@ class MovieCell: UICollectionViewCell {
   var movie: Movie? {
     didSet {
       title.text = movie?.title ?? nil
-      artistNames.text = movie?.artistNames ?? nil
+      artistNames.text = movie?.artistName ?? nil
       
       if let imageURL = movie?.image {
         thumbNail.setImage(fromURL: imageURL)
