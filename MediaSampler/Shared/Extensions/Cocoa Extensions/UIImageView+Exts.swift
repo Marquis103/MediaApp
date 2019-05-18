@@ -9,6 +9,12 @@
 import UIKit
 
 extension UIImageView {
+  ///
+  /// Asynchronously set imageView to image data contained at provided URL.
+  ///
+  /// Parameters:
+  ///   - `url`: Url of image
+  ///
   func setImage(fromURL url: URL) {
     DispatchQueue.global(qos: .userInteractive).async {
       if let imagedata = try? Data(contentsOf: url) {

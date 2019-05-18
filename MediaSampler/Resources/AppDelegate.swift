@@ -12,7 +12,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
-
+  var statusBarView: UIView?
+  
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
     //not using storyboard
@@ -48,14 +49,14 @@ extension AppDelegate {
     ]
     
     UINavigationBar.appearance().titleTextAttributes = attrs
-    let statusBar = UIView()
-    statusBar.backgroundColor = .statusBarBlue
+    statusBarView = UIView()
+    statusBarView?.backgroundColor = .statusBarBlue
     
-    window?.addSubview(statusBar)
-    window?.addConstraints(withFormat: "H:|[v0]|", forViews: statusBar)
+    window?.addSubview(statusBarView!)
+    window?.addConstraints(withFormat: "H:|[v0]|", forViews: statusBarView ?? UIView())
     
     let height = application.statusBarFrame.height
-    window?.addConstraints(withFormat: "V:[v0(\(height))]", forViews: statusBar)
+    window?.addConstraints(withFormat: "V:[v0(\(height))]", forViews: statusBarView ?? UIView())
   }
 }
 

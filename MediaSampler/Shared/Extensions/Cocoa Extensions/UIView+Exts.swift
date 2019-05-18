@@ -9,6 +9,9 @@
 import UIKit
 
 extension UIView {
+  ///
+  /// Adds view constraints using markup language.
+  ///
   func addConstraints(withFormat formatString: String, forViews views: UIView...) {
     var viewDictionary = [String: UIView]()
     for (index, view) in views.enumerated() {
