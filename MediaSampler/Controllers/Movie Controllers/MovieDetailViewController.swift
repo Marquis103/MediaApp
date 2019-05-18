@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+import AVKit
 
 class MovieDetailViewController: UITableViewController {
   enum MovieDetailTableViewRows: Int, CaseIterable {
@@ -59,6 +61,9 @@ class MovieDetailViewController: UITableViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+    appDelegate.window?.rootViewController?.view.frame = UIScreen.main.bounds
     
     // Hypothetically would update data from API service in `viewDidAppear`
     // while using `viewWillAppear` to update state from realm, coreData or local db cache
@@ -117,7 +122,20 @@ class MovieDetailViewController: UITableViewController {
     tableView.reloadData()
   }
   
+  ///
+  /// Plays apple stream
+  ///
   @IBAction func didPressPlayButton(_ sender: UIButton) {
+    if let videoURL = URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8") {
+      let player = AVPlayer(url: videoURL)
+      let landscapePlayerViewController = LandscapeViewControllerPlayer()
+      landscapePlayerViewController.player = player
+      
+      //movies should be played in landscape!
+      self.present(landscapePlayerViewController, animated: true) {
+        landscapePlayerViewController.player?.play()
+      }
+    }
   }
   
   fileprivate func exitOnError() {

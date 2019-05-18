@@ -53,7 +53,7 @@ class MovieListViewController: UICollectionViewController, UICollectionViewDeleg
     // while using `viewWillAppear` to update state from realm, coreData or local db cache
     self.onRefresh(nil)
   }
-
+  
   // MARK: - Helpers
   
   @objc func onRefresh(_ sender: UIRefreshControl?) {

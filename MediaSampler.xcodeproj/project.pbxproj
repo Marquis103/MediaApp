@@ -11,6 +11,7 @@
 		F8C9BDA0228E3E6A004EB786 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C9BD9F228E3E6A004EB786 /* MovieDetailViewController.swift */; };
 		F8D68870228E6D4500692216 /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D6886F228E6D4500692216 /* Segue.swift */; };
 		F8E8FAE1228F86E900CDF3FB /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E8FAE0228F86E900CDF3FB /* Artist.swift */; };
+		F8E8FAE5228FD94C00CDF3FB /* LandscapeViewControllerPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E8FAE4228FD94C00CDF3FB /* LandscapeViewControllerPlayer.swift */; };
 		F8EA7BD7228CCB320008C0C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EA7BD6228CCB320008C0C7 /* AppDelegate.swift */; };
 		F8EA7BD9228CCB320008C0C7 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EA7BD8228CCB320008C0C7 /* MovieListViewController.swift */; };
 		F8EA7BDC228CCB320008C0C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8EA7BDA228CCB320008C0C7 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 		F8C9BD9F228E3E6A004EB786 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		F8D6886F228E6D4500692216 /* Segue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
 		F8E8FAE0228F86E900CDF3FB /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		F8E8FAE4228FD94C00CDF3FB /* LandscapeViewControllerPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeViewControllerPlayer.swift; sourceTree = "<group>"; };
 		F8EA7BD3228CCB320008C0C7 /* MediaSampler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaSampler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8EA7BD6228CCB320008C0C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8EA7BD8228CCB320008C0C7 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			children = (
 				F8EA7BD8228CCB320008C0C7 /* MovieListViewController.swift */,
 				F8C9BD9F228E3E6A004EB786 /* MovieDetailViewController.swift */,
+				F8E8FAE4228FD94C00CDF3FB /* LandscapeViewControllerPlayer.swift */,
 			);
 			path = "Movie Controllers";
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 			files = (
 				F8C9BD9E228E333F004EB786 /* UIColor+Exts.swift in Sources */,
 				F8EA7C08228CEFF50008C0C7 /* Utilities.swift in Sources */,
+				F8E8FAE5228FD94C00CDF3FB /* LandscapeViewControllerPlayer.swift in Sources */,
 				F8EA7C0D228D14480008C0C7 /* UI-Utilities.swift in Sources */,
 				F8EA7C15228D23390008C0C7 /* UIView+Exts.swift in Sources */,
 				F8D68870228E6D4500692216 /* Segue.swift in Sources */,
